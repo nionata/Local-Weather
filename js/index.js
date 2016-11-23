@@ -12,6 +12,9 @@ function getWeather() {
             long = position.coords.longitude;
             $.getJSON("http://api.openweathermap.org/data/2.5/weather?lat=" + lat + "&lon=" + long + "&APPID=4d56e3677c38512b8f95d040c8998b4d", function(json) {
                 $("#name").text(json.weather[0].description);
+                $("#weather-icon").attr("src", "http://openweathermap.org/img/w/" + json.weather[0].icon + ".png")
+                $("#location").text(json.sys.country);
+                $("#place").text(json.name);
             });
         });
     }
