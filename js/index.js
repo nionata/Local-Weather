@@ -28,7 +28,7 @@ $(document).ready(function() {
 
 function getWeather() {
     $.getJSON("http://api.openweathermap.org/data/2.5/weather?lat=" + lat + "&lon=" + long + "&units=imperial&APPID=4d56e3677c38512b8f95d040c8998b4d", function(json) {
-        imperial = json.main.temp;
+        imperial = Math.round(json.main.temp);
         $("#name").text(json.weather[0].description);
         $("#weather-icon").attr("src", "http://openweathermap.org/img/w/" + json.weather[0].icon + ".png")
         $("#location").text(json.sys.country);
@@ -37,7 +37,7 @@ function getWeather() {
     });
 
     $.getJSON("http://api.openweathermap.org/data/2.5/weather?lat=" + lat + "&lon=" + long + "&units=metric&APPID=4d56e3677c38512b8f95d040c8998b4d", function(json) {
-        metric = json.main.temp;
+        metric = Math.round(json.main.temp);
     });
 };
 
